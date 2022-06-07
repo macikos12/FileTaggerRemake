@@ -59,6 +59,7 @@
             this.openFileButton.TabIndex = 1;
             this.openFileButton.Text = "Open File";
             this.openFileButton.UseVisualStyleBackColor = true;
+            this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
             // addTagButton
             // 
@@ -68,6 +69,7 @@
             this.addTagButton.TabIndex = 2;
             this.addTagButton.Text = "Add";
             this.addTagButton.UseVisualStyleBackColor = true;
+            this.addTagButton.Click += new System.EventHandler(this.addTagButton_Click);
             // 
             // saveButton
             // 
@@ -135,8 +137,10 @@
             // 
             // TagFiles
             // 
+            this.AcceptButton = this.addTagButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.backButton;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.alwaysOnTopCheckBox);

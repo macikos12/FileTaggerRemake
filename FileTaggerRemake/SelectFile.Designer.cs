@@ -41,7 +41,7 @@
             this.changeDirectoryButton.Name = "changeDirectoryButton";
             this.changeDirectoryButton.Size = new System.Drawing.Size(122, 23);
             this.changeDirectoryButton.TabIndex = 0;
-            this.changeDirectoryButton.Text = "Change Files Directory";
+            this.changeDirectoryButton.Text = "Change files directory";
             this.changeDirectoryButton.UseVisualStyleBackColor = true;
             this.changeDirectoryButton.Click += new System.EventHandler(this.changeDirectoryButton_Click);
             // 
