@@ -51,8 +51,7 @@ namespace FileTaggerRemake
 
         private void FileSelectForm_Load(object sender, EventArgs e)
         {
-            if (File.Exists(fileConfigPath)) {   }
-            else
+            if (!File.Exists(fileConfigPath))
             {
                 Directory.CreateDirectory(fileConfigDir);
                 using (FileStream fs = File.Create(fileConfigPath))

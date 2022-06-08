@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace FileTaggerRemake
 {
     public partial class TagFiles : Form
     {
-
+        public string fileConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FileTagger\config";
+        public string fileConfigDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FileTagger\";
         public TagFiles()
         {
             InitializeComponent();
@@ -45,6 +47,10 @@ namespace FileTaggerRemake
         private void TagFiles_Load(object sender, EventArgs e)
         {
             string selectedFiles = this.Tag.ToString();
+            if (!File.Exists(fileConfigDir + @"tags"))
+            {
+                using (FileStream fs = File.Create(fileConfigPath)) { }
+            }
         }
 
         private void openFileButton_Click(object sender, EventArgs e)
@@ -55,11 +61,11 @@ namespace FileTaggerRemake
 
         private void addTagButton_Click(object sender, EventArgs e)
         {
-            if(tagsComboBox.Text.Contains(";") || tagsComboBox.Text.Contains(" "))
+            if(tagsComboBox.Text.Contains(";") || tagsComboBox.Text.Contains(" ") || tagsComboBox.Items.Contains(" "))
             {
                 MessageBox.Show("Tags cannot contain spaces or semicolons", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if(tagsComboBox.Text == "")
+            else if(tagsComboBox.Text == string.Empty)
             {
                 MessageBox.Show("You have to write something", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
