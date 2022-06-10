@@ -43,6 +43,7 @@
             // 
             // backButton
             // 
+            this.backButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.backButton.Location = new System.Drawing.Point(13, 13);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
@@ -53,6 +54,7 @@
             // 
             // openFileButton
             // 
+            this.openFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.openFileButton.Location = new System.Drawing.Point(713, 13);
             this.openFileButton.Name = "openFileButton";
             this.openFileButton.Size = new System.Drawing.Size(75, 23);
@@ -63,6 +65,7 @@
             // 
             // addTagButton
             // 
+            this.addTagButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addTagButton.Location = new System.Drawing.Point(713, 42);
             this.addTagButton.Name = "addTagButton";
             this.addTagButton.Size = new System.Drawing.Size(75, 23);
@@ -73,6 +76,7 @@
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.Location = new System.Drawing.Point(713, 415);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
@@ -82,6 +86,7 @@
             // 
             // removeTagButton
             // 
+            this.removeTagButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.removeTagButton.Location = new System.Drawing.Point(568, 415);
             this.removeTagButton.Name = "removeTagButton";
             this.removeTagButton.Size = new System.Drawing.Size(75, 23);
@@ -100,6 +105,8 @@
             // 
             // tagsComboBox
             // 
+            this.tagsComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tagsComboBox.FormattingEnabled = true;
             this.tagsComboBox.Location = new System.Drawing.Point(91, 44);
             this.tagsComboBox.Name = "tagsComboBox";
@@ -108,6 +115,7 @@
             // 
             // alwaysOnTopCheckBox
             // 
+            this.alwaysOnTopCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.alwaysOnTopCheckBox.AutoSize = true;
             this.alwaysOnTopCheckBox.Location = new System.Drawing.Point(13, 420);
             this.alwaysOnTopCheckBox.Name = "alwaysOnTopCheckBox";
@@ -119,6 +127,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.tagsListbox);
             this.groupBox1.Location = new System.Drawing.Point(16, 66);
             this.groupBox1.Name = "groupBox1";
@@ -129,6 +140,9 @@
             // 
             // tagsListbox
             // 
+            this.tagsListbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tagsListbox.FormattingEnabled = true;
             this.tagsListbox.Location = new System.Drawing.Point(6, 19);
             this.tagsListbox.Name = "tagsListbox";
@@ -151,6 +165,7 @@
             this.Controls.Add(this.addTagButton);
             this.Controls.Add(this.openFileButton);
             this.Controls.Add(this.backButton);
+            this.MinimumSize = new System.Drawing.Size(360, 265);
             this.Name = "TagFiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tag Files";

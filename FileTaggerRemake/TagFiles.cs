@@ -49,7 +49,7 @@ namespace FileTaggerRemake
             string selectedFiles = this.Tag.ToString();
             if (!File.Exists(fileConfigDir + @"tags"))
             {
-                using (FileStream fs = File.Create(fileConfigPath)) { }
+                using (FileStream fs = File.Create(fileConfigPath + @"tags")) { }
             }
         }
 
@@ -63,15 +63,15 @@ namespace FileTaggerRemake
         {
             if(tagsComboBox.Text.Contains(";") || tagsComboBox.Text.Contains(" ") || tagsComboBox.Items.Contains(" "))
             {
-                MessageBox.Show("Tags cannot contain spaces or semicolons", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tags cannot contain spaces or semicolons", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if(tagsComboBox.Text == string.Empty)
             {
-                MessageBox.Show("You have to write something", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You have to write something", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (tagsListbox.Items.Contains(tagsComboBox.Text))
             {
-                MessageBox.Show("This file already has this tag assigned to it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This file already has this tag assigned to it", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

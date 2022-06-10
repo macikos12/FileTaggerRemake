@@ -77,7 +77,7 @@ namespace FileTaggerRemake
         {
             if(filesList.SelectedIndex == -1)
             {
-                MessageBox.Show("You Have to select a file first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You Have to select a file first", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

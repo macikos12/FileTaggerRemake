@@ -31,7 +31,6 @@
             this.changeDirectoryButton = new System.Windows.Forms.Button();
             this.filesList = new System.Windows.Forms.ListBox();
             this.directoryLabel = new System.Windows.Forms.Label();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.nextButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -47,6 +46,9 @@
             // 
             // filesList
             // 
+            this.filesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.filesList.FormattingEnabled = true;
             this.filesList.Location = new System.Drawing.Point(12, 37);
             this.filesList.Name = "filesList";
@@ -65,6 +67,7 @@
             // 
             // nextButton
             // 
+            this.nextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.nextButton.Location = new System.Drawing.Point(713, 415);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
@@ -83,6 +86,7 @@
             this.Controls.Add(this.directoryLabel);
             this.Controls.Add(this.filesList);
             this.Controls.Add(this.changeDirectoryButton);
+            this.MinimumSize = new System.Drawing.Size(278, 201);
             this.Name = "FileSelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select File";
@@ -98,7 +102,6 @@
         private System.Windows.Forms.Button changeDirectoryButton;
         private System.Windows.Forms.ListBox filesList;
         private System.Windows.Forms.Label directoryLabel;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button nextButton;
     }
 }
