@@ -37,7 +37,7 @@
             this.tagsComboBox = new System.Windows.Forms.ComboBox();
             this.alwaysOnTopCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tagsListbox = new System.Windows.Forms.ListBox();
+            this.tagsList = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,7 +130,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.tagsListbox);
+            this.groupBox1.Controls.Add(this.tagsList);
             this.groupBox1.Location = new System.Drawing.Point(16, 66);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(772, 343);
@@ -138,20 +138,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tags";
             // 
-            // tagsListbox
+            // tagsList
             // 
-            this.tagsListbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tagsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tagsListbox.FormattingEnabled = true;
-            this.tagsListbox.Location = new System.Drawing.Point(6, 19);
-            this.tagsListbox.Name = "tagsListbox";
-            this.tagsListbox.Size = new System.Drawing.Size(760, 316);
-            this.tagsListbox.TabIndex = 0;
+            this.tagsList.FormattingEnabled = true;
+            this.tagsList.Location = new System.Drawing.Point(6, 19);
+            this.tagsList.Name = "tagsList";
+            this.tagsList.Size = new System.Drawing.Size(760, 316);
+            this.tagsList.TabIndex = 0;
             // 
             // TagFiles
             // 
             this.AcceptButton = this.addTagButton;
+            this.AccessibleDescription = "Add tags to selected file";
+            this.AccessibleName = "File Tagger - Tag Files";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.backButton;
@@ -168,7 +170,7 @@
             this.MinimumSize = new System.Drawing.Size(360, 265);
             this.Name = "TagFiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tag Files";
+            this.Text = "FileTagger";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TagFiles_FormClosed);
             this.Load += new System.EventHandler(this.TagFiles_Load);
             this.groupBox1.ResumeLayout(false);
@@ -188,6 +190,6 @@
         private System.Windows.Forms.ComboBox tagsComboBox;
         private System.Windows.Forms.CheckBox alwaysOnTopCheckBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox tagsListbox;
+        private System.Windows.Forms.ListBox tagsList;
     }
 }

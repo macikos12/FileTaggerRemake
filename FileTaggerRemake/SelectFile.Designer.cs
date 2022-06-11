@@ -79,6 +79,8 @@
             // FileSelectForm
             // 
             this.AcceptButton = this.nextButton;
+            this.AccessibleDescription = "Select file to tag";
+            this.AccessibleName = "File Tagger - Select File";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
@@ -89,7 +91,7 @@
             this.MinimumSize = new System.Drawing.Size(278, 201);
             this.Name = "FileSelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Select File";
+            this.Text = "FileTagger";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileSelectForm_FormClosed);
             this.Load += new System.EventHandler(this.FileSelectForm_Load);
             this.ResumeLayout(false);

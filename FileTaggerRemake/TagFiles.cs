@@ -69,13 +69,13 @@ namespace FileTaggerRemake
             {
                 MessageBox.Show("You have to write something", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (tagsListbox.Items.Contains(tagsComboBox.Text))
+            else if (tagsList.Items.Contains(tagsComboBox.Text))
             {
                 MessageBox.Show("This file already has this tag assigned to it", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                tagsListbox.Items.Add(tagsComboBox.Text);
+                tagsList.Items.Add(tagsComboBox.Text);
             }
         }
     }
