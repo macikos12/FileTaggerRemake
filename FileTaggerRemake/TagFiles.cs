@@ -19,7 +19,14 @@ namespace FileTaggerRemake
         {
             InitializeComponent();
         }
-        
+        void tagsComboBoxRefresh()
+        {
+            string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
+            for (int i = 0; i < tags.Length; i++)
+            {
+                tagsComboBox.Items.Add(tags[i]);
+            }
+        }
         private void alwaysOnTopCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (alwaysOnTopCheckBox.Checked)
@@ -47,10 +54,11 @@ namespace FileTaggerRemake
         private void TagFiles_Load(object sender, EventArgs e)
         {
             string selectedFiles = this.Tag.ToString();
-            if (!File.Exists(fileConfigDir + @"tags"))
+            if (!File.Exists(fileConfigDir + @"tags.tags"))
             {
-                using (FileStream fs = File.Create(fileConfigPath + @"tags")) { }
+                using (FileStream fs = File.Create(fileConfigDir + @"tags.tags")) { }
             }
+            tagsComboBoxRefresh();
         }
 
         private void openFileButton_Click(object sender, EventArgs e)
@@ -77,6 +85,22 @@ namespace FileTaggerRemake
             {
                 tagsList.Items.Add(tagsComboBox.Text);
             }
+            tagsComboBox.Text = string.Empty;
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
+            for (int i = 0; i < tagsList.Items.Count; i++)
+            {
+                if (!tags.Contains(tagsList.Items[i]))
+                {
+                    File.AppendAllText(fileConfigDir + @"tags.tags", tagsList.Items[i].ToString() + Environment.NewLine);
+                }
+            }
+            Form fileSelectForm = new FileSelectForm();
+            fileSelectForm.Show();
+            this.Hide();
         }
     }
 }
