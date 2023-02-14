@@ -107,7 +107,7 @@ namespace FileTaggerRemake
 
         private void removeTagButton_Click(object sender, EventArgs e)
         {
-            //TODO removing tags from tagsList
+            tagsList.Items.Remove(tagsList.SelectedItem);
         }
     }
 }
