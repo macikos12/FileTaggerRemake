@@ -15,13 +15,38 @@ namespace FileTaggerRemake
     {
         public string fileConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FileTagger\config";
         public string fileConfigDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FileTagger\";
+        public string tagsFileName;
         public TagFiles()
         {
             InitializeComponent();
         }
+        void setTagsFileName(string fileDirectory)
+        {
+            string[] directories = File.ReadAllLines(fileConfigPath);
+            for(int i = 0; i < directories.Length; i++)
+            {
+                if (directories[i] == fileDirectory)
+                {
+                    tagsFileName = i.ToString();
+                    break;
+                }
+            }
+            tagsFileName = directories.Length.ToString();
+            File.AppendAllText(fileConfigPath, Environment.NewLine + directories.Length.ToString());
+        }
+        void tagsListRefresh()
+        {
+            if(File.Exists(tagsFileName))
+            {
+                string[] tags = File.ReadAllLines(fileConfigDir + tagsFileName);
+                for (int i = 0; i < tags.Length; i++)
+                {
+                    tagsList.Items.Add(tags[i]);
+                }
+            }
+        }
         void tagsComboBoxRefresh()
         {
-            //TODO separate tags file for every tagged file
             string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
             for (int i = 0; i < tags.Length; i++)
             {
@@ -56,10 +81,12 @@ namespace FileTaggerRemake
         {
             if (!File.Exists(fileConfigDir + @"tags.tags"))
             {
-                using (FileStream fs = File.Create(fileConfigDir + @"tags.tags")) { }
+                File.Create(fileConfigDir + @"tags.tags");
             }
+            string selectedFiles = this.Tag.ToString();
+            setTagsFileName(selectedFiles);
             tagsComboBoxRefresh();
-            //TODO loading tags to tagsList
+            tagsListRefresh();
         }
 
         private void openFileButton_Click(object sender, EventArgs e)
