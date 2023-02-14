@@ -44,7 +44,7 @@ namespace FileTaggerRemake
         {
             Form fileSelectForm = new FileSelectForm();
             fileSelectForm.Show();
-            this.Hide();
+            Hide();
         }
 
         private void TagFiles_FormClosed(object sender, FormClosedEventArgs e)
@@ -102,7 +102,7 @@ namespace FileTaggerRemake
             //TODO chack if .tags file for this tagged file exist and save tags to .tags file for this tagged file
             Form fileSelectForm = new FileSelectForm();
             fileSelectForm.Show();
-            this.Hide();
+            Hide();
         }
 
         private void removeTagButton_Click(object sender, EventArgs e)
