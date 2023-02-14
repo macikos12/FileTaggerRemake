@@ -32,12 +32,11 @@ namespace FileTaggerRemake
                 }
             }
             tagsFileName = directories.Length.ToString();
-            File.Create(tagsFileName);
-            File.AppendAllText(fileConfigPath, Environment.NewLine + directories.Length.ToString());
+            File.AppendAllText(fileConfigPath, Environment.NewLine + fileDirectory);
         }
         void tagsListRefresh()
         {
-            if(File.Exists(tagsFileName))
+            if(File.Exists(fileConfigPath + tagsFileName))
             {
                 string[] tags = File.ReadAllLines(fileConfigDir + tagsFileName);
                 for (int i = 0; i < tags.Length; i++)
@@ -82,7 +81,7 @@ namespace FileTaggerRemake
         {
             if (!File.Exists(fileConfigDir + @"tags.tags"))
             {
-                File.Create(fileConfigDir + @"tags.tags");
+                using (FileStream fs = File.Create(fileConfigDir + @"tags.tags")) { }
             }
             string selectedFiles = Tag.ToString();
             setTagsFileName(selectedFiles);
