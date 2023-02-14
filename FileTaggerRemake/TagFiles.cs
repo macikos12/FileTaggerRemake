@@ -23,20 +23,20 @@ namespace FileTaggerRemake
         void setTagsFileName(string fileDirectory)
         {
             string[] directories = File.ReadAllLines(fileConfigPath);
-            for(int i = 0; i < directories.Length; i++)
+            for(int i = 1; i < directories.Length; i++)
             {
                 if (directories[i] == fileDirectory)
                 {
                     tagsFileName = i.ToString();
-                    break;
+                    return;
                 }
             }
             tagsFileName = directories.Length.ToString();
-            File.AppendAllText(fileConfigPath, Environment.NewLine + fileDirectory);
+            File.AppendAllText(fileConfigPath, Environment.NewLine + Tag.ToString());
         }
         void tagsListRefresh()
         {
-            if(File.Exists(fileConfigPath + tagsFileName))
+            if (File.Exists(fileConfigDir + tagsFileName))
             {
                 string[] tags = File.ReadAllLines(fileConfigDir + tagsFileName);
                 for (int i = 0; i < tags.Length; i++)
@@ -126,7 +126,8 @@ namespace FileTaggerRemake
                     File.AppendAllText(fileConfigDir + @"tags.tags", tagsList.Items[i].ToString() + Environment.NewLine);
                 }
             }
-            for(int i = 0; i<= tagsList.Items.Count; i++)
+            File.WriteAllText(fileConfigDir + tagsFileName, "");
+            for (int i = 0; i < tagsList.Items.Count; i++)
             {
                 File.AppendAllText(fileConfigDir + tagsFileName, tagsList.Items[i] + Environment.NewLine);
             }
