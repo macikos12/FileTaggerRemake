@@ -21,6 +21,7 @@ namespace FileTaggerRemake
         }
         void tagsComboBoxRefresh()
         {
+            //TODO separate tags file for every tagged file
             string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
             for (int i = 0; i < tags.Length; i++)
             {
@@ -53,12 +54,12 @@ namespace FileTaggerRemake
 
         private void TagFiles_Load(object sender, EventArgs e)
         {
-            string selectedFiles = this.Tag.ToString();
             if (!File.Exists(fileConfigDir + @"tags.tags"))
             {
                 using (FileStream fs = File.Create(fileConfigDir + @"tags.tags")) { }
             }
             tagsComboBoxRefresh();
+            //TODO loading tags to tagsList
         }
 
         private void openFileButton_Click(object sender, EventArgs e)
@@ -98,9 +99,15 @@ namespace FileTaggerRemake
                     File.AppendAllText(fileConfigDir + @"tags.tags", tagsList.Items[i].ToString() + Environment.NewLine);
                 }
             }
+            //TODO chack if .tags file for this tagged file exist and save tags to .tags file for this tagged file
             Form fileSelectForm = new FileSelectForm();
             fileSelectForm.Show();
             this.Hide();
+        }
+
+        private void removeTagButton_Click(object sender, EventArgs e)
+        {
+            //TODO removing tags from tagsList
         }
     }
 }

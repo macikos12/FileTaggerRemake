@@ -94,6 +94,7 @@
             this.removeTagButton.TabIndex = 4;
             this.removeTagButton.Text = "Remove tag";
             this.removeTagButton.UseVisualStyleBackColor = true;
+            this.removeTagButton.Click += new System.EventHandler(this.removeTagButton_Click);
             // 
             // label1
             // 
