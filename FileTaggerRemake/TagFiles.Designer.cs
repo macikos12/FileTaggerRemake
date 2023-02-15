@@ -115,6 +115,7 @@
             this.tagsComboBox.Location = new System.Drawing.Point(91, 44);
             this.tagsComboBox.Name = "tagsComboBox";
             this.tagsComboBox.Size = new System.Drawing.Size(616, 21);
+            this.tagsComboBox.Sorted = true;
             this.tagsComboBox.TabIndex = 6;
             // 
             // alwaysOnTopCheckBox
@@ -151,6 +152,7 @@
             this.tagsList.Location = new System.Drawing.Point(6, 19);
             this.tagsList.Name = "tagsList";
             this.tagsList.Size = new System.Drawing.Size(760, 316);
+            this.tagsList.Sorted = true;
             this.tagsList.TabIndex = 0;
             // 
             // TagFiles
@@ -173,9 +175,9 @@
             this.Controls.Add(this.backButton);
             this.MinimumSize = new System.Drawing.Size(360, 265);
             this.Name = "TagFiles";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FileTagger";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TagFiles_FormClosed);
+            this.Text = "FileTagger - Tag Files";
             this.Load += new System.EventHandler(this.TagFiles_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

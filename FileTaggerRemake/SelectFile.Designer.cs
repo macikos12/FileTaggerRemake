@@ -46,10 +46,13 @@
             // 
             // filesList
             // 
+            this.filesList.AccessibleDescription = "";
+            this.filesList.AccessibleName = "";
             this.filesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filesList.FormattingEnabled = true;
+            this.filesList.HorizontalScrollbar = true;
             this.filesList.Location = new System.Drawing.Point(12, 37);
             this.filesList.Name = "filesList";
             this.filesList.Size = new System.Drawing.Size(776, 368);
@@ -90,8 +93,9 @@
             this.Controls.Add(this.changeDirectoryButton);
             this.MinimumSize = new System.Drawing.Size(278, 201);
             this.Name = "FileSelectForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FileTagger";
+            this.Text = "File Tagger - Select File";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileSelectForm_FormClosed);
             this.Load += new System.EventHandler(this.FileSelectForm_Load);
             this.ResumeLayout(false);

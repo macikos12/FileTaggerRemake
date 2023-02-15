@@ -23,11 +23,11 @@ namespace FileTaggerRemake
         private void filesListRefresh()
         {
             filesList.Items.Clear();
-            string[] fileConfig = File.ReadAllLines(fileConfigPath);
-            string[] files = Directory.GetFiles(fileConfig[0]);
+            string filesDir = File.ReadAllLines(fileConfigPath)[0];
+            string[] files = Directory.GetFiles(filesDir);
             for(int i = 0; i < files.Length; i++)
             {
-                filesList.Items.Add(files[i]);
+                filesList.Items.Add(Path.GetFileName(files[i]));
             }
         }
         private void changeDirectoryButton_Click(object sender, EventArgs e)
@@ -67,8 +67,7 @@ namespace FileTaggerRemake
 
         private void filesList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (filesList.SelectedIndex == -1) { }
-            else
+            if (filesList.SelectedIndex != -1)
             {
                 nextButton_Click(sender, e);
             }
@@ -81,11 +80,11 @@ namespace FileTaggerRemake
             }
             else
             {
-                string selectedFile = filesList.SelectedItem.ToString();
+                string[] files = Directory.GetFiles(directoryLabel.Text);
+                string selectedFile = files[filesList.SelectedIndex];
                 Form tagFiles = new TagFiles();
                 tagFiles.Tag = selectedFile;
                 tagFiles.Show();
-                this.Hide();
             }
             
         }

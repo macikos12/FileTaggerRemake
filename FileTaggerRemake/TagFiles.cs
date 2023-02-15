@@ -83,15 +83,9 @@ namespace FileTaggerRemake
         
         private void backButton_Click(object sender, EventArgs e)
         {
-            Form fileSelectForm = new FileSelectForm();
-            fileSelectForm.Show();
             Hide();
         }
 
-        private void TagFiles_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void TagFiles_Load(object sender, EventArgs e)
         {
@@ -148,9 +142,6 @@ namespace FileTaggerRemake
             {
                 File.AppendAllText(fileConfigDir + tagsFileName, tagsList.Items[i] + Environment.NewLine);
             }
-            
-            Form fileSelectForm = new FileSelectForm();
-            fileSelectForm.Show();
             Hide(); 
         }
 
