@@ -32,25 +32,41 @@ namespace FileTaggerRemake
                 }
             }
             tagsFileName = directories.Length.ToString();
+            File.WriteAllText(fileConfigDir + tagsFileName, "");
             File.AppendAllText(fileConfigPath, Environment.NewLine + Tag.ToString());
         }
         void tagsListRefresh()
         {
             if (File.Exists(fileConfigDir + tagsFileName))
             {
-                string[] tags = File.ReadAllLines(fileConfigDir + tagsFileName);
-                for (int i = 0; i < tags.Length; i++)
+                string[] fileTags = File.ReadAllLines(fileConfigDir + tagsFileName);
+                for (int i = 0; i < fileTags.Length; i++)
                 {
-                    tagsList.Items.Add(tags[i]);
+                    if (fileTags[i] != "")
+                    {
+                        tagsList.Items.Add(fileTags[i]);
+                    }
                 }
             }
         }
         void tagsComboBoxRefresh()
         {
             string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
+            List<string> tagsInUse = new List<string>();
+            for (int i = 1; i < File.ReadAllLines(fileConfigPath).Length; i++)
+            {
+                string[] tagsFile = File.ReadAllLines(fileConfigDir + i);
+                for (int j = 0; j < tagsFile.Length; j++)
+                {
+                    tagsInUse.Add(tagsFile[j]);
+                }
+            }
             for (int i = 0; i < tags.Length; i++)
             {
-                tagsComboBox.Items.Add(tags[i]);
+                if (tagsInUse.Contains(tags[i]))
+                {
+                    tagsComboBox.Items.Add(tags[i]);
+                }
             }
         }
         private void alwaysOnTopCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -112,28 +128,30 @@ namespace FileTaggerRemake
             else
             {
                 tagsList.Items.Add(tagsComboBox.Text);
+                if (!tagsComboBox.Items.Contains(tagsComboBox.Text))
+                {
+                    tagsComboBox.Items.Add(tagsComboBox.Text);
+                }
             }
             tagsComboBox.Text = string.Empty;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
-            for (int i = 0; i < tagsList.Items.Count; i++)
+            File.WriteAllText(fileConfigDir + @"tags.tags", "");
+            for (int i = 0; i < tagsComboBox.Items.Count; i++)
             {
-                if (!tags.Contains(tagsList.Items[i]))
-                {
-                    File.AppendAllText(fileConfigDir + @"tags.tags", tagsList.Items[i].ToString() + Environment.NewLine);
-                }
+                File.AppendAllText(fileConfigDir + @"tags.tags", tagsComboBox.Items[i] + Environment.NewLine);
             }
             File.WriteAllText(fileConfigDir + tagsFileName, "");
             for (int i = 0; i < tagsList.Items.Count; i++)
             {
                 File.AppendAllText(fileConfigDir + tagsFileName, tagsList.Items[i] + Environment.NewLine);
             }
+            
             Form fileSelectForm = new FileSelectForm();
             fileSelectForm.Show();
-            Hide();
+            Hide(); 
         }
 
         private void removeTagButton_Click(object sender, EventArgs e)
