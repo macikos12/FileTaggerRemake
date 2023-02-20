@@ -32,18 +32,20 @@ namespace FileTaggerRemake
         }
         private void changeDirectoryButton_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            dialog.IsFolderPicker = true;
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                IsFolderPicker = true
+            };
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                using (FileStream fs = File.Create(fileConfigPath))
-                {
-                    Byte[] title = new UTF8Encoding(true).GetBytes(dialog.FileName);
-                    fs.Write(title, 0, title.Length);
-                }
-
                 string[] fileConfig = File.ReadAllLines(fileConfigPath);
+                File.WriteAllText(fileConfigPath, dialog.FileName);
+                for(int i = 1;i < fileConfig.Length; i++)
+                {
+                    File.AppendAllText(fileConfigPath, Environment.NewLine + fileConfig[i]);
+                }
+                fileConfig = File.ReadAllLines(fileConfigPath);
                 directoryLabel.Text = fileConfig[0];
             }
             filesListRefresh();
@@ -67,10 +69,7 @@ namespace FileTaggerRemake
 
         private void filesList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (filesList.SelectedIndex != -1)
-            {
                 nextButton_Click(sender, e);
-            }
         }
         private void nextButton_Click(object sender, EventArgs e)
         {
@@ -82,8 +81,10 @@ namespace FileTaggerRemake
             {
                 string[] files = Directory.GetFiles(directoryLabel.Text);
                 string selectedFile = files[filesList.SelectedIndex];
-                Form tagFiles = new TagFiles();
-                tagFiles.Tag = selectedFile;
+                Form tagFiles = new TagFilesForm
+                {
+                    Tag = selectedFile
+                };
                 tagFiles.Show();
             }
             
@@ -92,6 +93,13 @@ namespace FileTaggerRemake
         private void FileSelectForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void showSearchFilesBtn_Click(object sender, EventArgs e)
+        {
+            Form searchFiles = new SearchFilesForm();
+            searchFiles.Show();
+            Hide();
         }
     }
 }

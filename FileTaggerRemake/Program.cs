@@ -16,7 +16,7 @@ namespace FileTaggerRemake
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FileSelectForm());
+            Application.Run(new SearchFilesForm());
         }
     }
 }

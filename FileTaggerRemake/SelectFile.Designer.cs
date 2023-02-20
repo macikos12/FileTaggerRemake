@@ -32,6 +32,7 @@
             this.filesList = new System.Windows.Forms.ListBox();
             this.directoryLabel = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
+            this.showSearchFilesBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // changeDirectoryButton
@@ -64,9 +65,9 @@
             this.directoryLabel.AutoSize = true;
             this.directoryLabel.Location = new System.Drawing.Point(140, 13);
             this.directoryLabel.Name = "directoryLabel";
-            this.directoryLabel.Size = new System.Drawing.Size(35, 13);
+            this.directoryLabel.Size = new System.Drawing.Size(22, 13);
             this.directoryLabel.TabIndex = 2;
-            this.directoryLabel.Text = "label1";
+            this.directoryLabel.Text = "C:\\";
             // 
             // nextButton
             // 
@@ -79,6 +80,18 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
+            // showSearchFilesBtn
+            // 
+            this.showSearchFilesBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.showSearchFilesBtn.Font = new System.Drawing.Font("Microsoft Tai Le", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showSearchFilesBtn.Location = new System.Drawing.Point(689, 8);
+            this.showSearchFilesBtn.Name = "showSearchFilesBtn";
+            this.showSearchFilesBtn.Size = new System.Drawing.Size(99, 23);
+            this.showSearchFilesBtn.TabIndex = 4;
+            this.showSearchFilesBtn.Text = "Search tagged files";
+            this.showSearchFilesBtn.UseVisualStyleBackColor = true;
+            this.showSearchFilesBtn.Click += new System.EventHandler(this.showSearchFilesBtn_Click);
+            // 
             // FileSelectForm
             // 
             this.AcceptButton = this.nextButton;
@@ -86,7 +99,9 @@
             this.AccessibleName = "File Tagger - Select File";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.showSearchFilesBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.showSearchFilesBtn);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.directoryLabel);
             this.Controls.Add(this.filesList);
@@ -109,6 +124,7 @@
         private System.Windows.Forms.ListBox filesList;
         private System.Windows.Forms.Label directoryLabel;
         private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.Button showSearchFilesBtn;
     }
 }
 

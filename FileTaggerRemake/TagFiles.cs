@@ -11,12 +11,12 @@ using System.IO;
 
 namespace FileTaggerRemake
 {
-    public partial class TagFiles : Form
+    public partial class TagFilesForm : Form
     {
         public string fileConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FileTagger\config";
         public string fileConfigDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FileTagger\";
         public string tagsFileName;
-        public TagFiles()
+        public TagFilesForm()
         {
             InitializeComponent();
         }

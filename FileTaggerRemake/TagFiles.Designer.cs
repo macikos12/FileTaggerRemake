@@ -1,6 +1,6 @@
 ﻿namespace FileTaggerRemake
 {
-    partial class TagFiles
+    partial class TagFilesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -66,9 +66,9 @@
             // addTagButton
             // 
             this.addTagButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addTagButton.Location = new System.Drawing.Point(713, 42);
+            this.addTagButton.Location = new System.Drawing.Point(713, 44);
             this.addTagButton.Name = "addTagButton";
-            this.addTagButton.Size = new System.Drawing.Size(75, 23);
+            this.addTagButton.Size = new System.Drawing.Size(75, 21);
             this.addTagButton.TabIndex = 2;
             this.addTagButton.Text = "Add";
             this.addTagButton.UseVisualStyleBackColor = true;
@@ -152,10 +152,9 @@
             this.tagsList.Location = new System.Drawing.Point(6, 19);
             this.tagsList.Name = "tagsList";
             this.tagsList.Size = new System.Drawing.Size(760, 316);
-            this.tagsList.Sorted = true;
             this.tagsList.TabIndex = 0;
             // 
-            // TagFiles
+            // TagFilesForm
             // 
             this.AcceptButton = this.addTagButton;
             this.AccessibleDescription = "Add tags to selected file";
@@ -174,7 +173,7 @@
             this.Controls.Add(this.openFileButton);
             this.Controls.Add(this.backButton);
             this.MinimumSize = new System.Drawing.Size(360, 265);
-            this.Name = "TagFiles";
+            this.Name = "TagFilesForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FileTagger - Tag Files";
