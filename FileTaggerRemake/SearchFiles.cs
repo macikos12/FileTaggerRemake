@@ -30,13 +30,18 @@ namespace FileTaggerRemake
             }
         }
 
-        void filesListRefresh()
+        void filesListRefresh(string tags)
         {
+            filesList.Items.Clear();
             string[] files = File.ReadAllLines(fileConfigPath);
-            for(int i = 1; i < files.Length; i++)
+            if(tags == "")
             {
-                filesList.Items.Add(files[i]);
+                for (int i = 1; i < files.Length; i++)
+                {
+                    filesList.Items.Add(files[i]);
+                }
             }
+            
         }
 
         private void tagFilesBtn_Click(object sender, EventArgs e)
@@ -51,7 +56,7 @@ namespace FileTaggerRemake
             if (File.Exists(fileConfigDir + @"tags.tags"))
             {
                 tagsComboBoxRefresh();
-                filesListRefresh();
+                filesListRefresh("");
             }
         }
 
@@ -66,6 +71,11 @@ namespace FileTaggerRemake
             {
                 System.Diagnostics.Process.Start(filesList.SelectedItem.ToString());
             }
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            filesListRefresh(tagsComboBox.Text);
         }
     }
 }
