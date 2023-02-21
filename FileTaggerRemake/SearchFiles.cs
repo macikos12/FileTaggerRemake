@@ -30,12 +30,24 @@ namespace FileTaggerRemake
             }
         }
 
-        void filesListRefresh(string searchTags)
+        bool checkIfArrayContains(string[,] array, string word, int number)
+        {
+            for (int i = 0; i < array.GetLength(1); i++)
+            {
+                if (array[number, i] == word)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        void filesListRefresh(string[] searchTags = null)
         {
             filesList.Items.Clear();
             string[] files = File.ReadAllLines(fileConfigPath);
             string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
-            if (searchTags == "")
+            if (searchTags == null)
             {
                 for (int i = 1; i < files.Length; i++)
                 {
@@ -48,16 +60,21 @@ namespace FileTaggerRemake
                 for (int i = 1; i < files.Length; i++)
                 {
                     string[] fileTags = File.ReadAllLines(fileConfigDir + i);
-                    for (int j = 0; j < fileTags.Length-1; j++)
+                    for (int j = 0; j < fileTags.Length; j++)
                     {
                         filesTags[i, j] = fileTags[j];
                     }
                 }
                 for(int i = 1; i < files.Length; i++)
                 {
-                    for(int j = 0; j < filesTags.GetLength(1); j++)
+                    bool isStillGood = true;
+                    for(int j = 0; j < searchTags.Length; j++)
                     {
-                        if (filesTags[i,j] == searchTags)
+                        if (!checkIfArrayContains(filesTags, searchTags[j], i))
+                        {
+                            isStillGood = false;
+                        }
+                        if(isStillGood && j == searchTags.Length - 1)
                         {
                             filesList.Items.Add(files[i]);
                         }
@@ -78,7 +95,7 @@ namespace FileTaggerRemake
             if (File.Exists(fileConfigDir + @"tags.tags"))
             {
                 tagsComboBoxRefresh();
-                filesListRefresh("");
+                filesListRefresh();
             }
             else
             {
@@ -95,7 +112,7 @@ namespace FileTaggerRemake
 
         private void openFileBtn_Click(object sender, EventArgs e)
         {
-            if(filesList.SelectedIndex != -1)
+            if(searchBtn.Enabled != false && filesList.SelectedIndex != -1)
             {
                 System.Diagnostics.Process.Start(filesList.SelectedItem.ToString());
             }
@@ -103,7 +120,7 @@ namespace FileTaggerRemake
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            filesListRefresh(tagsComboBox.Text);
+            filesListRefresh(tagsComboBox.Text.Split(' '));
         }
     }
 }
