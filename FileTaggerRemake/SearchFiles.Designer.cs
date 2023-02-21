@@ -53,6 +53,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filesList.FormattingEnabled = true;
+            this.filesList.HorizontalScrollbar = true;
             this.filesList.Location = new System.Drawing.Point(12, 41);
             this.filesList.Name = "filesList";
             this.filesList.Size = new System.Drawing.Size(776, 368);

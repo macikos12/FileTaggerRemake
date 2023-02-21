@@ -80,6 +80,12 @@ namespace FileTaggerRemake
                 tagsComboBoxRefresh();
                 filesListRefresh("");
             }
+            else
+            {
+                searchBtn.Enabled = false;
+                openFileBtn.Enabled = false;
+                filesList.Items.Add("It seems you have not tagged any files yet");
+            }
         }
 
         private void filesList_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -98,7 +104,6 @@ namespace FileTaggerRemake
         private void searchBtn_Click(object sender, EventArgs e)
         {
             filesListRefresh(tagsComboBox.Text);
-            //Deactivate search button if none files are taged
         }
     }
 }
