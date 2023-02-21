@@ -30,18 +30,30 @@ namespace FileTaggerRemake
             }
         }
 
-        void filesListRefresh(string tags)
+        void filesListRefresh(string searchTags)
         {
             filesList.Items.Clear();
             string[] files = File.ReadAllLines(fileConfigPath);
-            if(tags == "")
+            string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
+            if (searchTags == "")
             {
                 for (int i = 1; i < files.Length; i++)
                 {
                     filesList.Items.Add(files[i]);
                 }
             }
-            
+            else
+            {
+                string[,] filesTags = new string[files.Length, tags.Length];
+                for (int i = 1; i < files.Length; i++)
+                {
+                    string[] fileTags = File.ReadAllLines(fileConfigDir + i);
+                    for (int j = 0; j < fileTags.Length-1; j++)
+                    {
+                        filesTags[i, j] = fileTags[j];
+                    }
+                }
+            }
         }
 
         private void tagFilesBtn_Click(object sender, EventArgs e)
@@ -76,6 +88,7 @@ namespace FileTaggerRemake
         private void searchBtn_Click(object sender, EventArgs e)
         {
             filesListRefresh(tagsComboBox.Text);
+            //Deactivate search button if none files are taged
         }
     }
 }
