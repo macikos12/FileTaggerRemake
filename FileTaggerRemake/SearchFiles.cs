@@ -53,6 +53,16 @@ namespace FileTaggerRemake
                         filesTags[i, j] = fileTags[j];
                     }
                 }
+                for(int i = 1; i < files.Length; i++)
+                {
+                    for(int j = 0; j < filesTags.GetLength(1); j++)
+                    {
+                        if (filesTags[i,j] == searchTags)
+                        {
+                            filesList.Items.Add(files[i]);
+                        }
+                    }
+                }
             }
         }
 
