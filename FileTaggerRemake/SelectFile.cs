@@ -32,15 +32,11 @@ namespace FileTaggerRemake
         }
         private void changeDirectoryButton_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog
-            {
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-                IsFolderPicker = true
-            };
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string[] fileConfig = File.ReadAllLines(fileConfigPath);
-                File.WriteAllText(fileConfigPath, dialog.FileName);
+                File.WriteAllText(fileConfigPath, dialog.SelectedPath);
                 for(int i = 1;i < fileConfig.Length; i++)
                 {
                     File.AppendAllText(fileConfigPath, Environment.NewLine + fileConfig[i]);
