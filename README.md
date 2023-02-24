@@ -1,3 +1,3 @@
 # FileTaggerRemake
-This is my first 'big' project\n
+This is my first 'big' project.<br>
 Feel free to correct me
