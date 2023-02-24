@@ -32,7 +32,6 @@ namespace FileTaggerRemake
                 }
             }
             tagsFileName = directories.Length.ToString();
-            File.WriteAllText(fileConfigDir + tagsFileName, "");
             File.AppendAllText(fileConfigPath, Environment.NewLine + Tag.ToString());
         }
         void tagsListRefresh()
@@ -51,21 +50,24 @@ namespace FileTaggerRemake
         }
         void tagsComboBoxRefresh()
         {
-            string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
-            List<string> tagsInUse = new List<string>();
-            for (int i = 1; i < File.ReadAllLines(fileConfigPath).Length; i++)
+            if(File.Exists(fileConfigDir + tagsFileName))
             {
-                string[] tagsFile = File.ReadAllLines(fileConfigDir + i);
-                for (int j = 0; j < tagsFile.Length; j++)
+                string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
+                List<string> tagsInUse = new List<string>();
+                for (int i = 1; i < File.ReadAllLines(fileConfigPath).Length; i++)
                 {
-                    tagsInUse.Add(tagsFile[j]);
+                    string[] tagsFile = File.ReadAllLines(fileConfigDir + i);
+                    for (int j = 0; j < tagsFile.Length; j++)
+                    {
+                        tagsInUse.Add(tagsFile[j]);
+                    }
                 }
-            }
-            for (int i = 0; i < tags.Length; i++)
-            {
-                if (tagsInUse.Contains(tags[i]))
+                for (int i = 0; i < tags.Length; i++)
                 {
-                    tagsComboBox.Items.Add(tags[i]);
+                    if (tagsInUse.Contains(tags[i]))
+                    {
+                        tagsComboBox.Items.Add(tags[i]);
+                    }
                 }
             }
         }
