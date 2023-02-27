@@ -70,6 +70,14 @@ namespace FileTaggerRemake
                     }
                 }
             }
+            else
+            {
+                string[] tags = File.ReadAllLines(fileConfigDir + @"tags.tags");
+                for(int i = 0; i < tags.Length; i++)
+                {
+                    tagsComboBox.Items.Add(tags[i]);
+                }
+            }
         }
         private void alwaysOnTopCheckBox_CheckedChanged(object sender, EventArgs e)
         {
