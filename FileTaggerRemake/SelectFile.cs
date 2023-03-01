@@ -42,7 +42,7 @@ namespace FileTaggerRemake
                     File.AppendAllText(fileConfigPath, Environment.NewLine + fileConfig[i]);
                 }
                 fileConfig = File.ReadAllLines(fileConfigPath);
-                directoryLabel.Text = fileConfig[0];
+                directoryTxtBox.Text = fileConfig[0];
             }
             filesListRefresh();
         }
@@ -59,7 +59,7 @@ namespace FileTaggerRemake
                 }
             }
             string[] fileConfig = File.ReadAllLines(fileConfigPath);
-            directoryLabel.Text = fileConfig[0];
+            directoryTxtBox.Text = fileConfig[0];
             filesListRefresh();
         }
 
@@ -75,7 +75,7 @@ namespace FileTaggerRemake
             }
             else
             {
-                string[] files = Directory.GetFiles(directoryLabel.Text);
+                string[] files = Directory.GetFiles(directoryTxtBox.Text);
                 string selectedFile = files[filesList.SelectedIndex];
                 Form tagFiles = new TagFilesForm
                 {
