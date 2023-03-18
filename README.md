@@ -1,6 +1,7 @@
 # FileTaggerRemake
 This is my first 'big' project.<br>
-Feel free to correct me
+Feel free to correct me<br><br>
+[![Download FileTagger](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/filetagger/files/latest/download)
 ## Usage
 ### Usage - By window titles
 • Search Files - In this window you can search tagged files, but you need to tag some files first. If you have tagged files already you can search through them by entering tag or tags(separate tags with a space) into box at the top and clicking the Search button.<br><br>
