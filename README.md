@@ -1,4 +1,5 @@
 I abandoned it, it's not in a good state
+I'll be working on a C++ rewrite of it soon
 # FileTaggerRemake
 This is my first 'big' project.<br>
 Feel free to correct me<br><br>
